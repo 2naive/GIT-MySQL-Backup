@@ -1,6 +1,13 @@
 #! /bin/bash
-## usage: ./backup.sh /path/to/backups mysql_user mysql_pass mysql_db
-exec >>$1/log.txt;
+## usage: ./backup.sh /path/to/db_backups mysql_user mysql_pass mysql_db
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ];
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+exec >>$DIR/log.txt;
 exec 2>&1
 DATE=`date +"%Y.%m.%d %H:%M:%S"`
 echo "Backup started: $DATE"
