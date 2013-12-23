@@ -10,6 +10,11 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 exec >>$DIR/log.txt;
 exec 2>&1
 DATE=`date +"%Y.%m.%d %H:%M:%S"`
+if [[ ! $# -eq 4 ]] ; then
+    echo "Recieved $# argument(s) insted of 4"
+    echo "Usage: ./backup.sh /path/to/db_backups mysql_user mysql_pass mysql_db"
+    exit 1
+fi
 echo "Backup started: $DATE"
 cd $1
 chmod a+rwx $1
@@ -20,7 +25,7 @@ git push -q
 git config pack.windowMemory 10m
 git config pack.packSizeLimit 20m
 git gc
-swapoff -a
-swapon -a
+/sbin/swapoff -a
+/sbin/swapon -a
 DATE=`date +"%Y.%m.%d %H:%M:%S"`
 echo "Backup finished: $DATE"
