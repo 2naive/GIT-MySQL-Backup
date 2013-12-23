@@ -1,7 +1,7 @@
 #! /bin/bash
 ## usage: ./backup.sh /path/to/db_backups mysql_user mysql_pass mysql_db
 SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ];
+while [ -h "$SOURCE" ]; do
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
   SOURCE="$(readlink "$SOURCE")"
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
