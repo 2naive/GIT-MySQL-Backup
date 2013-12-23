@@ -3,10 +3,8 @@ INSTALLATION
 
 
     git clone https://github.com/2naive/GIT-MySQL-Backup.git
-    mv GIT-MySQL-Backup PATH-TO-BACKUP
-    cd PATH-TO-BACKUP
-    chmod +x backup.sh
-    (crontab -l ; echo "30 04 * * * /bin/bash PATH-TO-BACKUP/backup.sh PATH-TO-BACKUP MYSQL-USER MYSQL-PASS MYSQL-DB")| crontab -
+    chmod +x GIT-MySQL-Backup/backup.sh
+    (crontab -l ; echo "30 04 * * * /bin/bash /path/to/GIT-MySQL-Backup/backup.sh /path/to/MYSQL-BACKUPS MYSQL-USER MYSQL-PASS MYSQL-DB")| crontab -
 
 USAGE
 ================
