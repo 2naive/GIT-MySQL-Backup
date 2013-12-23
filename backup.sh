@@ -10,12 +10,12 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 exec >>$DIR/log.txt;
 exec 2>&1
 DATE=`date +"%Y.%m.%d %H:%M:%S"`
+echo "Backup started: $DATE"
 if [[ ! $# -eq 4 ]] ; then
     echo "Recieved $# argument(s) insted of 4"
     echo "Usage: ./backup.sh /path/to/db_backups mysql_user mysql_pass mysql_db"
     exit 1
 fi
-echo "Backup started: $DATE"
 cd $1
 chmod a+rwx $1
 mysqldump -u$2 -p$3 --tab=$1 --skip-extended-insert --skip-dump-date $4
